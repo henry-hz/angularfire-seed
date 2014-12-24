@@ -47,7 +47,7 @@ angular.module('simpleLogin', ['firebase', 'firebase.utils', 'changeEmail'])
         },
 
         createAccount: function(email, pass, name) {
-          return auth.$createUser({email: email, password: pass})
+          return auth.$createUser(email, pass)
             .then(function() {
               // authenticate so we have permission to write to Firebase
               return fns.login(email, pass);
@@ -61,7 +61,7 @@ angular.module('simpleLogin', ['firebase', 'firebase.utils', 'changeEmail'])
         },
 
         changePassword: function(email, oldpass, newpass) {
-          return auth.$changePassword({email: email, oldPassword: oldpass, newPassword: newpass});
+          return auth.$changePassword(email, oldpass, newpass);
         },
 
         changeEmail: function(password, oldEmail, newEmail) {
@@ -69,7 +69,7 @@ angular.module('simpleLogin', ['firebase', 'firebase.utils', 'changeEmail'])
         },
 
         removeUser: function(email, pass) {
-          return auth.$removeUser({email: email, password: pass});
+          return auth.$removeUser(email, pass);
         },
 
         watch: function(cb, $scope) {
